@@ -1,22 +1,17 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Task } from './../components/task';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  products: any[] = [
-    {
-      name: 'Cubrebocas',
-      price: 200,
-      description: 'En excelente estado',
-    },
-  ];
-
-  constructor() {
+  constructor(private http: HttpClient) {
     console.log('Woring...');
   }
 
-  getProduct() {
-    return this.products;
+  getAllTasks() {
+    const path = 'https://reqres.in/api/users?page=2';
+    return this.http.get<Task[]>(path);
   }
 }

@@ -7,11 +7,17 @@ import { ProductsService } from './../products.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  product: any[] = [];
+  // product: any[] = [];
 
   constructor(private _service: ProductsService) {
-    this.product = _service.getProduct();
+    // this.product = _service.getProduct();
   }
 
   ngOnInit(): void {}
+
+  getAllTasks() {
+    this._service.getAllTasks().subscribe((todos) => {
+      console.log(todos);
+    });
+  }
 }

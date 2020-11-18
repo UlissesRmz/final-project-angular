@@ -10,12 +10,19 @@ import { SigninComponent } from './components/signin/signin.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { InventoryComponent } from './components/inventory/inventory.component';
 
-//Servicios
-
+// Servicios
 import { ProductsService } from './components/products.service';
 
+// APIS
+import { HttpClientModule } from '@angular/common/http';
+
+// Firebase
+// import { AngularFireModule } from '@angular/fire';
+// import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+// import { AngularFirestoreModule } from '@angular/fire/firestore';
+// import { environment } from '../environments/environment';
 const routes: Routes = [
-  // { path: '**', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'sign-in', component: SigninComponent },
   { path: 'log-in', component: LogInComponent },
@@ -31,7 +38,7 @@ const routes: Routes = [
     LogInComponent,
     InventoryComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(routes)],
+  imports: [BrowserModule, HttpClientModule, RouterModule.forRoot(routes)],
   providers: [ProductsService],
   bootstrap: [AppComponent],
 })
