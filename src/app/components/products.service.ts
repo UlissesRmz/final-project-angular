@@ -6,6 +6,8 @@ import { Task } from './../components/task';
   providedIn: 'root',
 })
 export class ProductsService {
+  private api = 'https://reqres.in/api/users?page=2';
+
   constructor(private http: HttpClient) {
     console.log('Woring...');
   }
@@ -13,5 +15,9 @@ export class ProductsService {
   getAllTasks() {
     const path = 'https://reqres.in/api/users?page=2';
     return this.http.get<Task[]>(path);
+  }
+  getTask(data: number) {
+    const path = `https://reqres.in/api/users?page=2${data}`;
+    return this.http.get<Task>(path);
   }
 }
