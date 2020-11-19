@@ -15,6 +15,10 @@ import { ProductsService } from './components/products.service';
 
 // APIS
 import { HttpClientModule } from '@angular/common/http';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+//Table
+// import { MatTableModule } from '@angular/material/table';
 
 // Firebase
 // import { AngularFireModule } from '@angular/fire';
@@ -38,7 +42,13 @@ const routes: Routes = [
     LogInComponent,
     InventoryComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, RouterModule.forRoot(routes)],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes),
+    // BrowserAnimationsModule,
+    // MatTableModule,
+  ],
   providers: [ProductsService],
   bootstrap: [AppComponent],
 })

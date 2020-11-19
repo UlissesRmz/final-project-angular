@@ -16,8 +16,4 @@ export class ProductsService {
     const path = 'https://reqres.in/api/users?page=2';
     return this.http.get<Task[]>(path);
   }
-  getTask(data: number) {
-    const path = `https://reqres.in/api/users?page=2${data}`;
-    return this.http.get<Task>(path);
-  }
 }

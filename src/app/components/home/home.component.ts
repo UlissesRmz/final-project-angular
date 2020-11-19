@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from './../products.service';
-
+import { Task } from './../task';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  // product: any[] = [];
+  //product: any[] = [];
+  product: any[] = [];
+  example: Task[] = [];
 
   constructor(private _service: ProductsService) {
     // this.product = _service.getProduct();
@@ -16,14 +18,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {}
 
   getAllTasks() {
-    this._service.getAllTasks().subscribe((info) => {
-      console.log(info);
-    });
-  }
-
-  getTask() {
-    this._service.getTask(1).subscribe((todo) => {
-      console.log(todo);
-    });
+    this._service.getAllTasks().subscribe((info) => (this.example = info));
   }
 }

@@ -60,6 +60,22 @@
 
 <button (click)="getAllTasks()">getAllTasks()</button>
 <br>
-<button (click)="getTask()">getTask()</button>
-<br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#id</th>
+      <th scope="col">e-mail</th>
+      <th scope="col">first_name</th>
+      <th scope="col">last_name</th>
+      <th scope="col">avatar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of example">
+      <th scope="row"></th>
+    </tr>
+  </tbody>
+</table>
+
 </div>
