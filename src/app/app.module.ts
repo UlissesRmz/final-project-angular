@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+//Table
+import { MatTableModule } from '@angular/material/table';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -16,9 +18,6 @@ import { ProductsService } from './components/products.service';
 // APIS
 import { HttpClientModule } from '@angular/common/http';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-//Table
-// import { MatTableModule } from '@angular/material/table';
 
 // Firebase
 // import { AngularFireModule } from '@angular/fire';
@@ -47,7 +46,8 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
     // BrowserAnimationsModule,
-    // MatTableModule,
+
+    MatTableModule,
   ],
   providers: [ProductsService],
   bootstrap: [AppComponent],

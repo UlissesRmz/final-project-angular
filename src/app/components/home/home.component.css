@@ -7,3 +7,9 @@ div.container {
 div.design-carousel {
   margin-top: 60px;
 }
+
+table {
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}

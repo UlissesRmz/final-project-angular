@@ -1,19 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Task } from './../components/task';
-
+import { Observable } from 'rxjs';
+import { Info_Data } from './info_data';
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  private api = 'https://reqres.in/api/users?page=2';
-
   constructor(private http: HttpClient) {
     console.log('Woring...');
   }
 
-  getAllTasks() {
-    const path = 'https://reqres.in/api/users?page=2';
-    return this.http.get<Task[]>(path);
+  getAPI(url: string) {
+    return this.http.get(url);
   }
 }
