@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
 //Table
 import { MatTableModule } from '@angular/material/table';
 
@@ -17,13 +18,7 @@ import { ProductsService } from './components/products.service';
 
 // APIS
 import { HttpClientModule } from '@angular/common/http';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// Firebase
-// import { AngularFireModule } from '@angular/fire';
-// import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
-// import { AngularFirestoreModule } from '@angular/fire/firestore';
-// import { environment } from '../environments/environment';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
@@ -33,6 +28,16 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes),
+    MatTableModule,
+    // AngularFireModule.initializeApp(environment.firebase, 'final-projects'), // imports firebase/app needed for everything
+    // AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    // AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
+    // AngularFireStorageModule, // imports firebase/storage only needed for storage features
+  ],
   declarations: [
     AppComponent,
     NavbarComponent,
@@ -41,14 +46,7 @@ const routes: Routes = [
     LogInComponent,
     InventoryComponent,
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    RouterModule.forRoot(routes),
-    // BrowserAnimationsModule,
 
-    MatTableModule,
-  ],
   providers: [ProductsService],
   bootstrap: [AppComponent],
 })
