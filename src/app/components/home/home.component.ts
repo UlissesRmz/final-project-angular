@@ -11,12 +11,13 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  dataInter: Info_Data[] = [];
   TableInfo: Info_Data[] = [];
-  constructor(private _service: ProductsService) {
+  constructor(private _service: ProductsService) {}
+
+  ngOnInit(): void {
     this.getData();
   }
-
-  ngOnInit(): void {}
 
   //Get data API
   getData() {
@@ -24,12 +25,11 @@ export class HomeComponent implements OnInit {
       .getAPI('https://reqres.in/api/users?page=2')
       .subscribe((data: any) => {
         //Obtiene los datos en la posicion 2
-        this.TableInfo = data.data;
+        this.dataInter = data.data;
       });
   }
 
   //Manda a llamar la informacion
-  dataSource = new MatTableDataSource(this.TableInfo);
 
   //Informacion que se mostrara
   displayedColumns: string[] = [
