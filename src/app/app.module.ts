@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 
 //Table
 import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -33,6 +36,11 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
     MatTableModule,
+    MatCardModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+
     // AngularFireModule.initializeApp(environment.firebase, 'final-projects'), // imports firebase/app needed for everything
     // AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     // AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
