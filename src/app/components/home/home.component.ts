@@ -12,7 +12,6 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class HomeComponent implements OnInit {
   dataInter: Info_Data[] = [];
-  TableInfo: Info_Data[] = [];
   constructor(private _service: ProductsService) {}
 
   ngOnInit(): void {
@@ -40,11 +39,11 @@ export class HomeComponent implements OnInit {
     'avatar',
   ];
 
-  columnas = [
-    { titulo: 'Id', name: 'id' },
-    { titulo: 'Email', name: 'email' },
-    { titulo: 'First Name', name: 'first_name' },
-    { titulo: 'Last Name', name: 'last_name' },
-    { titulo: 'Avatar', name: 'avatar' },
-  ];
+  // columnas = [
+  //   { titulo: 'Id', name: 'id' },
+  //   { titulo: 'Email', name: 'email' },
+  //   { titulo: 'First Name', name: 'first_name' },
+  //   { titulo: 'Last Name', name: 'last_name' },
+  //   { titulo: 'Avatar', name: 'avatar' },
+  // ];
 }

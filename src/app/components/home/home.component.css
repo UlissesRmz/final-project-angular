@@ -13,3 +13,15 @@ table {
   margin-bottom: 20px;
   margin-top: 20px;
 }
+
+img.profile {
+  width: 50%;
+  align-items: center;
+}
+
+ng-container.tabledata {
+  margin-bottom: 25px;
+}
+td.imagen {
+  margin-bottom: 20px;
+}
