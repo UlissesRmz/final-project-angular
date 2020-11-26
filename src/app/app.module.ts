@@ -1,6 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+//Firebase
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+
 //Table
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
@@ -16,7 +22,7 @@ import { HomeComponent } from './components/home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SigninComponent } from './components/signin/signin.component';
 import { LogInComponent } from './components/log-in/log-in.component';
-// import { InventoryComponent } from './components/inventory/inventory.component';
+import { InventoryComponent } from './components/inventory/inventory.component';
 
 // Servicios
 import { ProductsService } from './components/products.service';
@@ -25,11 +31,11 @@ import { ProductsService } from './components/products.service';
 import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  //{ path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'sign-in', component: SigninComponent },
   { path: 'log-in', component: LogInComponent },
-  // { path: 'inventory', component: InventoryComponent },
+  { path: 'inventory', component: InventoryComponent },
 ];
 
 @NgModule({
@@ -44,10 +50,9 @@ const routes: Routes = [
     ReactiveFormsModule,
     MatButtonModule,
     MatIconModule,
-    // AngularFireModule.initializeApp(environment.firebase, 'final-projects'), // imports firebase/app needed for everything
-    // AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    // AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
-    // AngularFireStorageModule, // imports firebase/storage only needed for storage features
+    AngularFireModule.initializeApp(environment.firebase, 'final-projects'), // imports firebase/app needed for everything
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAnalyticsModule,
   ],
   declarations: [
     AppComponent,
