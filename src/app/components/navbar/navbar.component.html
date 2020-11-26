@@ -1,18 +1,39 @@
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Tomorrow&display=swap");
+</style>
 <div class="navigation sticky-top">
-
-<ul class="nav justify-content-center">
-
-    <li class="nav-item" >
-      <a class="nav-link" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home</a>
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [routerLink]="['/home']"
+        routerLinkActive="router-link-active"
+        >Home <span class="material-icons"> home </span></a
+      >
     </li>
-    <li class="nav-item" >
-      <a class="nav-link" [routerLink]="['/sign-in']" routerLinkActive="router-link-active"  >Sign-in</a>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [routerLink]="['/sign-in']"
+        routerLinkActive="router-link-active"
+        >Sign-in <span class="material-icons"> supervisor_account </span></a
+      >
     </li>
-    <li class="nav-item" >
-      <a class="nav-link"  [routerLink]="['/log-in']" routerLinkActive="router-link-active">Log-in</a>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [routerLink]="['/log-in']"
+        routerLinkActive="router-link-active"
+        >Log-in <span class="material-icons"> account_circle </span></a
+      >
     </li>
-    <li class="nav-item" >
-        <a class="nav-link"  [routerLink]="['/inventory']" routerLinkActive="router-link-active">Inventory</a>
-      </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [routerLink]="['/inventory']"
+        routerLinkActive="router-link-active"
+        >Inventory <span class="material-icons icon"> list </span></a
+      >
+    </li>
   </ul>
 </div>

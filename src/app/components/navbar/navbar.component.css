@@ -1,15 +1,20 @@
 div.navigation {
-  background: rgb(145, 145, 145);
-  background: linear-gradient(
-    90deg,
-    rgba(145, 145, 145, 0.028448879551820738) 35%,
-    rgba(145, 145, 145, 0.03) 70%
-  );
   margin-top: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   height: 10px;
   font-size: 20px;
+  font-family: "Tomorrow", sans-serif;
 }
 a {
   color: black;
+}
+
+ul {
+  background: rgb(88, 88, 88);
+  background: radial-gradient(
+    circle,
+    rgba(88, 88, 88, 0.3) 0%,
+    rgba(176, 176, 176, 0.3029586834733894) 50%,
+    rgba(88, 88, 88, 0.3) 100%
+  );
 }
