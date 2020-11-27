@@ -1,26 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormControl,
-  FormGroupDirective,
-  NgForm,
-  Validators,
-} from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { MustMatch } from './../must-match';
 
 // VAlidation metod in TS
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(
-    control: FormControl | null,
-    form: FormGroupDirective | NgForm | null
-  ): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(
-      control &&
-      control.invalid &&
-      (control.dirty || control.touched || isSubmitted)
-    );
-  }
-}
 
 // -----------------------------------------------------------
 @Component({
@@ -29,16 +11,48 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./signin.component.css'],
 })
 export class SigninComponent implements OnInit {
-  // Form Validation
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
+  submitted = false;
+  register: FormGroup;
+  constructor(private formBuilder: FormBuilder) {}
 
-  matcher = new MyErrorStateMatcher();
+  ngOnInit() {
+    this.register = this.formBuilder.group(
+      {
+        first_Name: ['', Validators.required],
+        last_Name: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        confirm_email: ['', [Validators.required]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirm_password: ['', Validators.required],
+      },
+      {
+        validator: [
+          MustMatch('password', 'confirm_password'),
+          MustMatch('email', 'confirm_email'),
+        ],
+      }
+    );
+  }
 
-  // -----------------------------------------
-  constructor() {}
+  // convenience getter for easy access to form fields
+  get f() {
+    return this.register.controls;
+  }
 
-  ngOnInit(): void {}
+  onSubmit() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.register.invalid) {
+      return;
+    }
+
+    // display form values on success
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.register.value, null, 4));
+  }
+
+  onReset() {
+    this.submitted = false;
+    this.register.reset();
+  }
 }
