@@ -54,7 +54,7 @@ const routes: Routes = [
     MatButtonModule,
     MatIconModule,
     MatStepperModule,
-    AngularFireModule.initializeApp(environment.firebase, 'final-projects'), // imports firebase/app needed for everything
+    AngularFireModule.initializeApp(environment.firebase), // imports firebase/app needed for everything
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAnalyticsModule,
     BrowserAnimationsModule,
