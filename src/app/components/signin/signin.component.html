@@ -1,8 +1,5 @@
 <mat-card class="container signin">
-  <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-    {{ !isLinear ? "Enable linear mode" : "Disable linear mode" }}
-  </button>
-  <mat-vertical-stepper [linear]="isLinear" #stepper (ngSubmit)="onSubmit()">
+  <mat-vertical-stepper [linear]="!isLinear" #stepper (ngSubmit)="onSubmit()">
     <mat-step [stepControl]="firstFormGroup">
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Fill out your name</ng-template>

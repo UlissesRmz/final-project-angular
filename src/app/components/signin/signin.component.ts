@@ -16,7 +16,6 @@ import { MustMatch } from './../must-match';
   styleUrls: ['./signin.component.css'],
 })
 export class SigninComponent implements OnInit {
- 
   isLinear = false;
   submitted = false;
 
@@ -26,7 +25,6 @@ export class SigninComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
-
     this.firstFormGroup = this.formBuilder.group(
       {
         firstName: ['', Validators.required],
@@ -50,6 +48,8 @@ export class SigninComponent implements OnInit {
     });
   }
 
+  // ng build --aot --prod
+
   get f() {
     return this.firstFormGroup.controls;
   }
@@ -65,7 +65,6 @@ export class SigninComponent implements OnInit {
       console.log('Here there an error with the second Form');
       return;
     }
-
 
     alert(
       'SUCCESS!! :-)\n\n' + JSON.stringify(this.firstFormGroup.value, null, 4)

@@ -2,10 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 // //Firebase
-// import { AngularFireModule } from '@angular/fire';
-// import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
-// import { AngularFirestoreModule } from '@angular/fire/firestore';
-// import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 
 //Table
 import { MatTableModule } from '@angular/material/table';
@@ -54,9 +54,9 @@ const routes: Routes = [
     MatButtonModule,
     MatIconModule,
     MatStepperModule,
-    // AngularFireModule.initializeApp(environment.firebase, 'final-projects'), // imports firebase/app needed for everything
-    // AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    // AngularFireAnalyticsModule,
+    AngularFireModule.initializeApp(environment.firebase, 'final-projects'), // imports firebase/app needed for everything
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAnalyticsModule,
     BrowserAnimationsModule,
   ],
   declarations: [
@@ -65,7 +65,7 @@ const routes: Routes = [
     HomeComponent,
     SigninComponent,
     LogInComponent,
-    // InventoryComponent,
+    InventoryComponent,
   ],
 
   providers: [ProductsService],
