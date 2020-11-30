@@ -1,145 +1,158 @@
 <mat-card class="container signin">
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <div class="form-row">
-      <div class="form-group col">
-        <label>Title</label>
-        <select
-          formControlName="title"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.title.errors }"
-        >
-          <option value=""></option>
-          <option value="Mr">Mr</option>
-          <option value="Mrs">Mrs</option>
-          <option value="Miss">Miss</option>
-          <option value="Ms">Ms</option>
-        </select>
-        <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
-          <div *ngIf="f.title.errors.required">Title is required</div>
-        </div>
-      </div>
-      <div class="form-group col-5">
-        <label>First Name</label>
-        <input
-          type="text"
-          formControlName="firstName"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
-          placeholder="First Name"
-        />
-        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-          <div *ngIf="f.firstName.errors.required">First Name is required</div>
-        </div>
-      </div>
+  <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{ !isLinear ? "Enable linear mode" : "Disable linear mode" }}
+  </button>
+  <mat-vertical-stepper [linear]="isLinear" #stepper (ngSubmit)="onSubmit()">
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Fill out your name</ng-template>
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input
+            matInput
+            placeholder="First name"
+            formControlName="firstName"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input
+            matInput
+            placeholder="Last name"
+            formControlName="lastName"
+            required
+          />
+        </mat-form-field>
 
-      <div class="form-group col-5">
-        <label>Last Name</label>
-        <input
-          type="text"
-          formControlName="lastName"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
-          placeholder="Last Name"
-        />
-        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-          <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-        </div>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col">
-        <label>Email</label>
-        <input
-          type="email"
-          formControlName="email"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
-          placeholder="example@something.com"
-        />
-        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-          <div *ngIf="f.email.errors.required">Email is required</div>
-        </div>
-      </div>
-      <div class="form-group col">
-        <label>Confirm Email</label>
-        <input
-          type="email"
-          formControlName="emailConfirm"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.emailConfirm.errors }"
-          placeholder="Verify your email"
-        />
-        <div
-          *ngIf="submitted && f.emailConfirm.errors"
-          class="invalid-feedback"
-        >
-          <div *ngIf="f.emailConfirm.errors.required">
-            Confirm Email is required
-          </div>
-          <div *ngIf="f.emailConfirm.errors.mustMatch">Email must match</div>
-        </div>
-      </div>
-    </div>
+        <!-- EMAIL -->
 
-    <div class="form-row">
-      <div class="form-group col">
-        <label>Password</label>
-        <input
-          type="password"
-          formControlName="password"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
-          placeholder="Password"
-        />
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-          <div *ngIf="f.password.errors.required">Password is required</div>
-          <div *ngIf="f.password.errors.minlength">
-            Password must be at least 6 characters
-          </div>
+        <mat-form-field class="example-half-width">
+          <mat-label>Email</mat-label>
+          <input
+            type="email"
+            matInput
+            formControlName="email"
+            placeholder="Ex. pat@example.com"
+          />
+          <mat-error *ngIf="f.email.invalid && !f.email.required">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="!f.email.required">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- CONFIRM EMAIL -->
+        <mat-form-field class="example-half-width">
+          <mat-label>Confirm your Email</mat-label>
+          <input
+            type="email"
+            matInput
+            formControlName="emailConfirm"
+            placeholder="Ex. pat@example.com"
+          />
+          <mat-error
+            *ngIf="f.emailConfirm.invalid && !f.emailConfirm.mustMatch"
+          >
+            Please confirm your email address
+          </mat-error>
+          <mat-error *ngIf="!f.emailConfirm.required">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- END EMAIL SECTION -->
+        <br />
+        <!-- PASSWWORD -->
+
+        <mat-form-field class="example-half-width">
+          <mat-label>Password</mat-label>
+          <input
+            type="password"
+            matInput
+            formControlName="password"
+            placeholder="password"
+          />
+          <mat-error *ngIf="f.password.invalid && !f.password.required">
+            Please enter a password
+          </mat-error>
+          <mat-error *ngIf="!f.password.required">
+            Password is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- CONFIRM PASSWORD -->
+        <mat-form-field class="example-half-width">
+          <mat-label>Confirm your Password</mat-label>
+          <input
+            type="password"
+            matInput
+            formControlName="confirmPassword"
+            placeholder="Confirm your Password"
+          />
+          <mat-error
+            *ngIf="f.confirmPassword.invalid && !f.confirmPassword.mustMatch"
+          >
+            Please confirm your password
+          </mat-error>
+        </mat-form-field>
+        <!-- END PASSWORD SECTION -->
+
+        <br /><br />
+        <div>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
         </div>
-      </div>
-      <div class="form-group col">
-        <label>Confirm Password</label>
-        <input
-          type="password"
-          formControlName="confirmPassword"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"
-          placeholder="Verify your password"
-        />
-        <div
-          *ngIf="submitted && f.confirmPassword.errors"
-          class="invalid-feedback"
-        >
-          <div *ngIf="f.confirmPassword.errors.required">
-            Confirm Password is required
-          </div>
-          <div *ngIf="f.confirmPassword.errors.mustMatch">
-            Passwords must match
-          </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Fill out your address</ng-template>
+
+        <!-- ADDRESS -->
+
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input
+            matInput
+            formControlName="address"
+            placeholder="Ex. 1 Main St, New York, NY"
+            required
+          />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Address 2</mat-label>
+          <input
+            matInput
+            formControlName="address2"
+            placeholder="Ex. 2 Main St, New York, NY"
+            required
+          />
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+          <mat-label>Postal Code</mat-label>
+          <input matInput formControlName="cp" placeholder="# 09873" required />
+        </mat-form-field>
+
+        <!-- END ADDRESS SECTION -->
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary">Next</button>
         </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-raised-button color="primary" (click)="onSubmit()">
+          Submit
+        </button>
       </div>
-    </div>
-    <div class="form-group form-check">
-      <input
-        type="checkbox"
-        formControlName="acceptTerms"
-        id="acceptTerms"
-        class="form-check-input"
-        [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }"
-      />
-      <label for="acceptTerms" class="form-check-label"
-        >Accept Terms & Conditions</label
-      >
-      <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">
-        Accept Ts & Cs is required
-      </div>
-    </div>
-    <div class="text-center">
-      <button class="btn btn-primary mr-1">Register</button>
-      <button class="btn btn-secondary" type="reset" (click)="onReset()">
-        Cancel
-      </button>
-    </div>
-  </form>
+    </mat-step>
+  </mat-vertical-stepper>
 </mat-card>

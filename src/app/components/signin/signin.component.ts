@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import {
+  Validators,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+} from '@angular/forms';
 import { MustMatch } from './../must-match';
 
 // VAlidation metod in TS
@@ -11,22 +16,25 @@ import { MustMatch } from './../must-match';
   styleUrls: ['./signin.component.css'],
 })
 export class SigninComponent implements OnInit {
-  registerForm: any;
+ 
+  isLinear = false;
   submitted = false;
+
+  firstFormGroup: any;
+  secondFormGroup: any;
 
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.registerForm = this.formBuilder.group(
+
+    this.firstFormGroup = this.formBuilder.group(
       {
-        title: ['', Validators.required],
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
         emailConfirm: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', Validators.required],
-        acceptTerms: [false, Validators.requiredTrue],
       },
       {
         validator: [
@@ -35,29 +43,39 @@ export class SigninComponent implements OnInit {
         ],
       }
     );
+    this.secondFormGroup = this.formBuilder.group({
+      address: ['', Validators.required],
+      address2: ['', Validators.required],
+      cp: ['', Validators.required],
+    });
   }
 
-  // convenience getter for easy access to form fields
   get f() {
-    return this.registerForm.controls;
+    return this.firstFormGroup.controls;
   }
 
   onSubmit() {
     this.submitted = true;
 
-    // stop here if form is invalid
-    if (this.registerForm.invalid) {
+    if (this.firstFormGroup.invalid) {
+      console.log('Here there an error with the first Form');
+      return;
+    }
+    if (this.secondFormGroup.invalid) {
+      console.log('Here there an error with the second Form');
       return;
     }
 
-    // display form values on success
+
     alert(
-      'SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4)
+      'SUCCESS!! :-)\n\n' + JSON.stringify(this.firstFormGroup.value, null, 4)
+    );
+    alert(
+      'SUCCESS!! :-)\n\n' + JSON.stringify(this.secondFormGroup.value, null, 4)
     );
   }
 
   onReset() {
     this.submitted = false;
-    this.registerForm.reset();
   }
 }
