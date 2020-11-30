@@ -1,200 +1,145 @@
 <mat-card class="container signin">
-  <form class="example-form" (ngSubmit)="onSubmit()" [formGroup]="registerForm">
-    <!-- EMAIL -->
-
-    <mat-form-field class="example-full-width">
-      <mat-label>Email</mat-label>
-      <input
-        type="email"
-        matInput
-        formControlName="email"
-        placeholder="Ex. pat@example.com"
-        [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
-      />
-      <mat-hint>Write a email with @example!</mat-hint>
-      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-        <div *ngIf="f.email.errors.required">
-          <mat-error> Please enter a valid email address </mat-error>
-        </div>
-        <div *ngIf="f.email.errors.email">
-          <mat-error> Email is <strong>required</strong> </mat-error>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group col">
+        <label>Title</label>
+        <select
+          formControlName="title"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.title.errors }"
+        >
+          <option value=""></option>
+          <option value="Mr">Mr</option>
+          <option value="Mrs">Mrs</option>
+          <option value="Miss">Miss</option>
+          <option value="Ms">Ms</option>
+        </select>
+        <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+          <div *ngIf="f.title.errors.required">Title is required</div>
         </div>
       </div>
-    </mat-form-field>
-
-    <!-- CONFIRM EMAIL -->
-
-    <mat-form-field class="example-full-width">
-      <mat-label>Vertify your Email</mat-label>
-      <input
-        type="email"
-        matInput
-        formControlName="confirmEmail"
-        placeholder="Confirm your email"
-        [ngClass]="{ 'is-invalid': submitted && f.confirmEmail.errors }"
-      />
-      <mat-hint>Confirm your email</mat-hint>
-      <div *ngIf="submitted && f.confirmEmail.errors" class="invalid-feedback">
-        <div *ngIf="f.confirmEmail.errors.required">
-          <mat-error> Please enter the same password </mat-error>
-        </div>
-        <div *ngIf="f.confirmEmail.errors.mustMatch">
-          <mat-error> Email is <strong>required</strong> </mat-error>
+      <div class="form-group col-5">
+        <label>First Name</label>
+        <input
+          type="text"
+          formControlName="firstName"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
+          placeholder="First Name"
+        />
+        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+          <div *ngIf="f.firstName.errors.required">First Name is required</div>
         </div>
       </div>
-    </mat-form-field>
 
-    <!-- END EMAIL -->
-
-    <!-- PASSWORD -->
-    <mat-form-field class="example-full-width">
-      <mat-label>Password</mat-label>
-      <input
-        type="password"
-        matInput
-        formControlName="password"
-        placeholder="Password"
-        [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
-      />
-      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-        <div *ngIf="f.password.errors.required">
-          <mat-error>Password must be at least 6 characters </mat-error>
-        </div>
-        <div *ngIf="f.password.errors.minlength">
-          <mat-error> Password is <strong>required</strong> </mat-error>
+      <div class="form-group col-5">
+        <label>Last Name</label>
+        <input
+          type="text"
+          formControlName="lastName"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
+          placeholder="Last Name"
+        />
+        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+          <div *ngIf="f.lastName.errors.required">Last Name is required</div>
         </div>
       </div>
-    </mat-form-field>
+    </div>
+    <div class="form-row">
+      <div class="form-group col">
+        <label>Email</label>
+        <input
+          type="email"
+          formControlName="email"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+          placeholder="example@something.com"
+        />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Email is required</div>
+        </div>
+      </div>
+      <div class="form-group col">
+        <label>Confirm Email</label>
+        <input
+          type="email"
+          formControlName="emailConfirm"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.emailConfirm.errors }"
+          placeholder="Verify your email"
+        />
+        <div
+          *ngIf="submitted && f.emailConfirm.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f.emailConfirm.errors.required">
+            Confirm Email is required
+          </div>
+          <div *ngIf="f.emailConfirm.errors.mustMatch">Email must match</div>
+        </div>
+      </div>
+    </div>
 
-    <!-- CONFIRM PASWORD -->
-
-    <mat-form-field class="example-full-width">
-      <mat-label>Verify your password</mat-label>
+    <div class="form-row">
+      <div class="form-group col">
+        <label>Password</label>
+        <input
+          type="password"
+          formControlName="password"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+          placeholder="Password"
+        />
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+          <div *ngIf="f.password.errors.minlength">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group col">
+        <label>Confirm Password</label>
+        <input
+          type="password"
+          formControlName="confirmPassword"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }"
+          placeholder="Verify your password"
+        />
+        <div
+          *ngIf="submitted && f.confirmPassword.errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f.confirmPassword.errors.required">
+            Confirm Password is required
+          </div>
+          <div *ngIf="f.confirmPassword.errors.mustMatch">
+            Passwords must match
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group form-check">
       <input
-        type="password"
-        matInput
-        formControlName="confirm_password"
-        placeholder="Confirm Password"
-        [ngClass]="{ 'is-invalid': submitted && f.confirm_password.errors }"
+        type="checkbox"
+        formControlName="acceptTerms"
+        id="acceptTerms"
+        class="form-check-input"
+        [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }"
       />
-      <div
-        *ngIf="submitted && f.confirmPassword.errors"
-        class="invalid-feedback"
+      <label for="acceptTerms" class="form-check-label"
+        >Accept Terms & Conditions</label
       >
-        <div *ngIf="f.confirmPassword.errors.required">
-          <mat-hint>The password doesn't mach!</mat-hint>
-        </div>
-        <div *ngIf="f.confirmPassword.errors.mustMatch">
-          <mat-error> Please enter password correctly </mat-error>
-        </div>
+      <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">
+        Accept Ts & Cs is required
       </div>
-    </mat-form-field>
-
-    <!-- END PASSSWORD -->
-
-    <br />
-    <!-- FIRST AND LAST NAME -->
-
-    <table class="example-half-width" cellspacing="0">
-      <tr>
-        <td>
-          <mat-form-field class="example-full-width">
-            <mat-label>First name</mat-label>
-            <input
-              type="text"
-              matInput
-              formControlName="firstName"
-              [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
-            />
-            <div
-              *ngIf="submitted && f.firstName.errors"
-              class="invalid-feedback"
-            >
-              <div *ngIf="f.firstName.errors.required">
-                First Name is required
-              </div>
-            </div>
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field class="example-half-width">
-            <mat-label>Last Name</mat-label>
-            <input
-              type="text"
-              matInput
-              formControlName="lastName"
-              [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
-            />
-            <div
-              *ngIf="submitted && f.lastName.errors"
-              class="invalid-feedback"
-            >
-              <div *ngIf="f.lastName.errors.required">
-                Last Name is required
-              </div>
-            </div>
-          </mat-form-field>
-        </td>
-      </tr>
-    </table>
-
-    <!-- END FIRST AND LAST NAME -->
-
-    <!-- ADDRESS LABEL -->
-    <p>
-      <mat-form-field class="example-full-width">
-        <mat-label>Address</mat-label>
-        <textarea matInput placeholder="Ex. 100 Main St"></textarea>
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>Address 2</mat-label>
-        <textarea matInput></textarea>
-      </mat-form-field>
-    </p>
-
-    <table class="example-half-width" cellspacing="0">
-      <tr>
-        <td>
-          <mat-form-field class="example-full-width">
-            <mat-label>City</mat-label>
-            <input matInput placeholder="Ex. San Francisco" />
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field class="example-full-width">
-            <mat-label>State</mat-label>
-            <input matInput placeholder="Ex. California" />
-          </mat-form-field>
-        </td>
-      </tr>
-    </table>
-
-    <table class="example-half-width" cellspacing="0">
-      <tr>
-        <td>
-          <mat-form-field class="example-full-width">
-            <mat-label>Postal Code</mat-label>
-            <input
-              matInput
-              #postalCode
-              maxlength="5"
-              placeholder="Ex. 94105"
-              value="94043"
-            />
-            <mat-hint align="end">{{ postalCode.value.length }} / 5</mat-hint>
-          </mat-form-field>
-        </td>
-
-        <!-- SUBMIT BUTTON -->
-
-        <td>
-          <button mat-raised-button color="primary">Submit</button>
-        </td>
-
-        <!-- END SUBMIT BUTTON -->
-      </tr>
-    </table>
-
-    <!-- END ADDRES LABEL -->
+    </div>
+    <div class="text-center">
+      <button class="btn btn-primary mr-1">Register</button>
+      <button class="btn btn-secondary" type="reset" (click)="onReset()">
+        Cancel
+      </button>
+    </div>
   </form>
 </mat-card>

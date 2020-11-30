@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  Validators,
-  FormBuilder,
-  FormGroup,
-  FormControl,
-} from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { MustMatch } from './../must-match';
 
 // VAlidation metod in TS
@@ -16,25 +11,27 @@ import { MustMatch } from './../must-match';
   styleUrls: ['./signin.component.css'],
 })
 export class SigninComponent implements OnInit {
-  submitted = false;
   registerForm: any;
+  submitted = false;
 
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group(
       {
+        title: ['', Validators.required],
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
-        confirmEmail: ['', [Validators.required]],
+        emailConfirm: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
-        confirm_password: ['', Validators.required],
+        confirmPassword: ['', Validators.required],
+        acceptTerms: [false, Validators.requiredTrue],
       },
       {
         validator: [
-          MustMatch('password', 'confirm_password'),
-          MustMatch('email', 'confirmEmail'),
+          MustMatch('password', 'confirmPassword'),
+          MustMatch('email', 'emailConfirm'),
         ],
       }
     );
