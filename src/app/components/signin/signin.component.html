@@ -10,6 +10,7 @@
             placeholder="First name"
             formControlName="firstName"
             required
+            [(ngModel)]="item.first_name"
           />
         </mat-form-field>
         <mat-form-field>
@@ -19,6 +20,7 @@
             placeholder="Last name"
             formControlName="lastName"
             required
+            [(ngModel)]="item.last_name"
           />
         </mat-form-field>
 
@@ -48,6 +50,7 @@
             matInput
             formControlName="emailConfirm"
             placeholder="Ex. pat@example.com"
+            [(ngModel)]="item.email"
           />
           <mat-error
             *ngIf="f.emailConfirm.invalid && !f.emailConfirm.mustMatch"
@@ -87,6 +90,7 @@
             matInput
             formControlName="confirmPassword"
             placeholder="Confirm your Password"
+            [(ngModel)]="item.password"
           />
           <mat-error
             *ngIf="f.confirmPassword.invalid && !f.confirmPassword.mustMatch"
@@ -115,6 +119,7 @@
             formControlName="address"
             placeholder="Ex. 1 Main St, New York, NY"
             required
+            [(ngModel)]="item.address"
           />
         </mat-form-field>
         <br />
@@ -125,12 +130,19 @@
             formControlName="address2"
             placeholder="Ex. 2 Main St, New York, NY"
             required
+            [(ngModel)]="item.address2"
           />
         </mat-form-field>
         <br />
         <mat-form-field>
           <mat-label>Postal Code</mat-label>
-          <input matInput formControlName="cp" placeholder="# 09873" required />
+          <input
+            matInput
+            formControlName="cp"
+            placeholder="# 09873"
+            required
+            [(ngModel)]="item.postalCode"
+          />
         </mat-form-field>
 
         <!-- END ADDRESS SECTION -->

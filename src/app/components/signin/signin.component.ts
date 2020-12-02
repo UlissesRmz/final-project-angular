@@ -1,15 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  Validators,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-} from '@angular/forms';
+import { Validators, FormBuilder } from '@angular/forms';
+import { Forms_Regs } from '../forms_reg';
+import { ProductsService } from '../products.service';
 import { MustMatch } from './../must-match';
 
-// VAlidation metod in TS
-
-// -----------------------------------------------------------
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -22,7 +16,25 @@ export class SigninComponent implements OnInit {
   firstFormGroup: any;
   secondFormGroup: any;
 
-  constructor(private formBuilder: FormBuilder) {}
+  item: any = {
+    email: '',
+    password: '',
+    first_name: '',
+    last_name: '',
+    address: '',
+    address2: '',
+    postalCode: '',
+  };
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private _service: ProductsService
+  ) {
+    this._service.listItem().subscribe((item) => {
+      this.item = item;
+      console.log(this.item);
+    });
+  }
 
   ngOnInit() {
     this.firstFormGroup = this.formBuilder.group(
@@ -72,6 +84,15 @@ export class SigninComponent implements OnInit {
     alert(
       'SUCCESS!! :-)\n\n' + JSON.stringify(this.secondFormGroup.value, null, 4)
     );
+
+    this._service.addItem(this.item);
+    this.item.first_name = '';
+    this.item.last_name = '';
+    this.item.email = '';
+    this.item.address = '';
+    this.item.address2 = '';
+    this.item.postalCode = '';
+    this.item.password = '';
   }
 
   onReset() {

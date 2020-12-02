@@ -71,7 +71,7 @@ export class InventoryComponent implements AfterViewInit {
   items: Observable<any[]>;
   constructor(firestore: AngularFirestore) {
     this.items = firestore.collection('items').valueChanges();
-
+    console.log(this.items);
     // Create 100 users
     const users = Array.from({ length: 100 }, (_, k) => createNewUser(k + 1));
 

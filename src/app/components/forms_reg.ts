@@ -5,7 +5,5 @@ export interface Forms_Regs {
   last_name: string;
   address: string;
   address2: string;
-  city: String;
-  state: string;
   postalCode: string;
 }
