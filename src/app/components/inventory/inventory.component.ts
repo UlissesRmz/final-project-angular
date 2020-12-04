@@ -41,13 +41,14 @@ export class InventoryComponent implements AfterViewInit {
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.items);
   }
+
+  delete(item) {
+    this._service.deleteItem(item);
+  }
   openSnackBar(message: string, action: string) {
     this._notify.open(message, action, {
       duration: 2000,
     });
-  }
-  delete() {
-    this._service.deleteItem();
   }
 
   ngAfterViewInit() {

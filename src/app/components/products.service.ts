@@ -18,7 +18,6 @@ export class ProductsService {
 
   constructor(private http: HttpClient, private afs: AngularFirestore) {
     this.itemsCollection = afs.collection<Forms_Regs>('items');
-    this.itemDoc = this.afs.doc<Forms_Regs>('items');
     this.items = this.itemsCollection.snapshotChanges().pipe(
       map((actions) =>
         actions.map((a) => {
@@ -37,8 +36,8 @@ export class ProductsService {
   addItem(item: Forms_Regs) {
     this.itemsCollection.add(item);
   }
-  deleteItem() {
-    this.itemDoc = this.afs.doc<Forms_Regs>(`items/${item.name}`);
+  deleteItem(item: any) {
+    this.itemDoc = this.afs.doc<Forms_Regs>(`items/${item.id}`);
     this.itemDoc.delete();
   }
 
