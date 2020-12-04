@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductsService } from '../products.service';
 import { Forms_Regs } from '../forms_reg';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-inventory',
@@ -29,7 +29,9 @@ export class InventoryComponent implements AfterViewInit {
   //firebase
   items: any;
 
-  constructor(firestore: AngularFirestore, private _service: ProductsService) {
+  durationInSeconds = 5;
+
+  constructor(private _service: ProductsService, private _notify: MatSnackBar) {
     this._service.listItem().subscribe((item) => {
       this.items = item;
       this.dataInfor = item;
@@ -38,6 +40,14 @@ export class InventoryComponent implements AfterViewInit {
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(this.items);
+  }
+  openSnackBar(message: string, action: string) {
+    this._notify.open(message, action, {
+      duration: 2000,
+    });
+  }
+  delete() {
+    this._service.deleteItem();
   }
 
   ngAfterViewInit() {

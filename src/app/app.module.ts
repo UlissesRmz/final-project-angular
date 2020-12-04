@@ -18,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -42,7 +43,6 @@ const routes: Routes = [
   { path: 'inventory', component: InventoryComponent },
 ];
 
-
 @NgModule({
   imports: [
     BrowserModule,
@@ -61,6 +61,7 @@ const routes: Routes = [
     AngularFireAnalyticsModule,
     BrowserAnimationsModule,
     MatPaginatorModule,
+    MatSnackBarModule,
   ],
   declarations: [
     AppComponent,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductsService } from '../products.service';
 import { MustMatch } from './../must-match';
 
@@ -28,9 +29,14 @@ export class SigninComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private _service: ProductsService
+    private _service: ProductsService,
+    private _notify: MatSnackBar
   ) {}
-
+  openSnackBar(message: string, action: string) {
+    this._notify.open(message, action, {
+      duration: 2000,
+    });
+  }
   ngOnInit() {
     this.firstFormGroup = this.formBuilder.group(
       {
