@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
-import { Forms_Regs } from '../forms_reg';
+
 import { ProductsService } from '../products.service';
 import { MustMatch } from './../must-match';
 
@@ -29,12 +29,7 @@ export class SigninComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private _service: ProductsService
-  ) {
-    this._service.listItem().subscribe((item) => {
-      this.item = item;
-      console.log(this.item);
-    });
-  }
+  ) {}
 
   ngOnInit() {
     this.firstFormGroup = this.formBuilder.group(
@@ -78,13 +73,6 @@ export class SigninComponent implements OnInit {
       return;
     }
 
-    alert(
-      'SUCCESS!! :-)\n\n' + JSON.stringify(this.firstFormGroup.value, null, 4)
-    );
-    alert(
-      'SUCCESS!! :-)\n\n' + JSON.stringify(this.secondFormGroup.value, null, 4)
-    );
-
     this._service.addItem(this.item);
     this.item.first_name = '';
     this.item.last_name = '';
@@ -93,6 +81,13 @@ export class SigninComponent implements OnInit {
     this.item.address2 = '';
     this.item.postalCode = '';
     this.item.password = '';
+
+    // alert(
+    //   'SUCCESS!! :-)\n\n' + JSON.stringify(this.firstFormGroup.value, null, 4)
+    // );
+    // alert(
+    //   'SUCCESS!! :-)\n\n' + JSON.stringify(this.secondFormGroup.value, null, 4)
+    // );
   }
 
   onReset() {

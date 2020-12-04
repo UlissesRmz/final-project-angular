@@ -42,6 +42,7 @@ const routes: Routes = [
   { path: 'inventory', component: InventoryComponent },
 ];
 
+
 @NgModule({
   imports: [
     BrowserModule,

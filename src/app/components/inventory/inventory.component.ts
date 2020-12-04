@@ -4,57 +4,8 @@ import { Observable } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-
-export interface Item {
-  name: string;
-}
-
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
-}
-
-/** Constants used to fill up our data base. */
-const COLORS: string[] = [
-  'maroon',
-  'red',
-  'orange',
-  'yellow',
-  'olive',
-  'green',
-  'purple',
-  'fuchsia',
-  'lime',
-  'teal',
-  'aqua',
-  'blue',
-  'navy',
-  'black',
-  'gray',
-];
-const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
-];
+import { ProductsService } from '../products.service';
+import { Forms_Regs } from '../forms_reg';
 
 @Component({
   selector: 'app-inventory',
@@ -62,21 +13,30 @@ const NAMES: string[] = [
   styleUrls: ['./inventory.component.css'],
 })
 export class InventoryComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'name', 'progress', 'color'];
-  dataSource: MatTableDataSource<UserData>;
-
+  displayedColumns: string[] = [
+    'first_name',
+    'last_name',
+    'email',
+    'password',
+    'opciones',
+    'opciones2',
+  ];
+  dataSource: MatTableDataSource<Forms_Regs>;
+  dataInfor: Forms_Regs[] = [];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  items: Observable<any[]>;
-  constructor(firestore: AngularFirestore) {
-    this.items = firestore.collection('items').valueChanges();
-    console.log(this.items);
-    // Create 100 users
-    const users = Array.from({ length: 100 }, (_, k) => createNewUser(k + 1));
+  items: any;
+
+  constructor(firestore: AngularFirestore, private _service: ProductsService) {
+    this._service.listItem().subscribe((item) => {
+      this.items = item;
+      this.dataInfor = item;
+      console.log(this.items);
+    });
 
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
+    this.dataSource = new MatTableDataSource(this.items);
   }
 
   ngAfterViewInit() {
@@ -92,19 +52,4 @@ export class InventoryComponent implements AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
-}
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-    '.';
-
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))],
-  };
 }
