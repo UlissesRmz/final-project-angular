@@ -26,6 +26,7 @@ export class InventoryComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+  //firebase
   items: any;
 
   constructor(firestore: AngularFirestore, private _service: ProductsService) {
