@@ -21,6 +21,8 @@ export class InventoryComponent implements AfterViewInit {
     'opciones',
     'opciones2',
   ];
+
+  editItem: Forms_Regs;
   dataSource: MatTableDataSource<Forms_Regs>;
   dataInfor: Forms_Regs[] = [];
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -45,12 +47,14 @@ export class InventoryComponent implements AfterViewInit {
   delete(item: any) {
     this._service.deleteItem(item);
   }
+  update(item: any) {
+    this.editItem = item;
+  }
   openSnackBar(message: string, action: string) {
     this._notify.open(message, action, {
       duration: 2000,
     });
   }
-
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

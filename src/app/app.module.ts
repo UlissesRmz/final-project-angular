@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -36,7 +37,7 @@ import { ProductsService } from './components/products.service';
 import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
-  //{ path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'sign-in', component: SigninComponent },
   { path: 'log-in', component: LogInComponent },
@@ -62,6 +63,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     MatPaginatorModule,
     MatSnackBarModule,
+    MatDialogModule,
   ],
   declarations: [
     AppComponent,
