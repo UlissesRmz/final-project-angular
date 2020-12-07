@@ -42,7 +42,7 @@ export class InventoryComponent implements AfterViewInit {
     this.dataSource = new MatTableDataSource(this.items);
   }
 
-  delete(item) {
+  delete(item: any) {
     this._service.deleteItem(item);
   }
   openSnackBar(message: string, action: string) {
