@@ -30,7 +30,7 @@ export class InventoryComponent implements AfterViewInit {
 
   //firebase
   items: any;
-
+  value = '';
   durationInSeconds = 5;
 
   constructor(private _service: ProductsService, private _notify: MatSnackBar) {
@@ -50,6 +50,10 @@ export class InventoryComponent implements AfterViewInit {
   update(item: any) {
     this.editItem = item;
   }
+  addItemUpdated() {
+    this._service.updateItem(this.editItem);
+  }
+
   openSnackBar(message: string, action: string) {
     this._notify.open(message, action, {
       duration: 2000,

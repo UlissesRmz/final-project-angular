@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from './../products.service';
 import { Info_Data } from './../info_data';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
 // import { Observable } from '@angular/cli';
 
 //Para le componenete
@@ -12,6 +12,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class HomeComponent implements OnInit {
   dataInter: Info_Data[] = [];
+
   constructor(private _service: ProductsService) {}
 
   ngOnInit(): void {

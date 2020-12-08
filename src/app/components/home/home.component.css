@@ -7,6 +7,9 @@ div.container {
 div.design-carousel {
   margin-top: 60px;
 }
+mat-card {
+  margin: 20px;
+}
 
 table {
   width: 100%;
@@ -24,4 +27,13 @@ ng-container.tabledata {
 }
 td.imagen {
   margin-bottom: 20px;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
 }

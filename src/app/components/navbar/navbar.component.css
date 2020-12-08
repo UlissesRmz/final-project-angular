@@ -1,10 +1,11 @@
 div.navigation {
-  height: 10px;
-  font-size: 20px;
   font-family: "Tomorrow", sans-serif;
 }
 a {
   color: black;
+  display: inline-flex;
+  font-size: 20px;
+  margin: 10px 5px 10px 25px;
 }
 
 ul {
@@ -15,4 +16,15 @@ ul {
     rgba(176, 176, 176, 0.3029586834733894) 50%,
     rgba(88, 88, 88, 0.3) 100%
   );
+}
+li.toolbar {
+  padding-left: 100px;
+  padding-top: 10px;
+  padding-right: 50px;
+}
+li.user {
+  padding-left: 43%;
+}
+li.loginIcon {
+  padding-top: 18px;
 }

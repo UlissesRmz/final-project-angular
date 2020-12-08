@@ -20,6 +20,9 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -35,6 +38,7 @@ import { ProductsService } from './components/products.service';
 
 // APIS
 import { HttpClientModule } from '@angular/common/http';
+import { FooterExComponent } from './components/footer-ex/footer-ex.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
@@ -48,10 +52,13 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
+    MatListModule,
+    MatDividerModule,
     RouterModule.forRoot(routes),
     MatTableModule,
     MatCardModule,
     MatInputModule,
+    MatMenuModule,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
@@ -72,6 +79,7 @@ const routes: Routes = [
     SigninComponent,
     LogInComponent,
     InventoryComponent,
+    FooterExComponent,
   ],
 
   providers: [ProductsService],

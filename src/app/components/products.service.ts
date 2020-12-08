@@ -40,6 +40,10 @@ export class ProductsService {
     this.itemDoc = this.afs.doc<Forms_Regs>(`items/${item.id}`);
     this.itemDoc.delete();
   }
+  updateItem(item: any) {
+    this.itemDoc = this.afs.doc<Forms_Regs>(`items/${item.id}`);
+    this.itemDoc.update(item);
+  }
 
   getAPI(url: string) {
     return this.http.get(url);

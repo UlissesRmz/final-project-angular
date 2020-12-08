@@ -39,15 +39,170 @@
 
       <ng-container matColumnDef="opciones">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Opciones</th>
-        <td mat-cell *matCellDef="let row">
+        <td mat-cell *matCellDef="let item">
           <button
             mat-raised-button
             color="primary"
             data-toggle="modal"
             data-target="#dialogModal"
+            (click)="update(item)"
           >
             Update
           </button>
+          <!-- Modal -->
+          <form action="" (ngSubmit)="addItemUpdated()">
+            <div
+              class="modal fade"
+              id="dialogModal"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="DialogUpdate"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h2 class="modal-title" id="DialogUpdate">
+                      Information of {{ item.first_name }}
+                    </h2>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- input and changes for th user -->
+                    <mat-form-field class="example-form-field">
+                      <mat-label>{{ item.first_name }}</mat-label>
+                      <input matInput type="text" />
+                      <button
+                        mat-button
+                        *ngIf="value"
+                        matSuffix
+                        [(ngModel)]="editItem.first_name"
+                        mat-icon-button
+                        aria-label=""
+                        (click)="value = ''"
+                      >
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                    <mat-form-field class="example-form-field">
+                      <mat-label>{{ item.last_name }}</mat-label>
+                      <input matInput type="text" />
+                      <button
+                        mat-button
+                        *ngIf="value"
+                        matSuffix
+                        mat-icon-button
+                        aria-label="Last_Name"
+                        [(ngModel)]="editItem.last_name"
+                        (click)="value = ''"
+                      >
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                    <mat-form-field class="example-form-field">
+                      <mat-label>{{ item.email }}</mat-label>
+                      <input matInput type="text" />
+                      <button
+                        mat-button
+                        *ngIf="value"
+                        matSuffix
+                        mat-icon-button
+                        aria-label="Email"
+                        [(ngModel)]="editItem.email"
+                        (click)="value = ''"
+                      >
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                    <mat-form-field class="example-form-field">
+                      <mat-label>{{ item.password }}</mat-label>
+                      <input matInput type="text" />
+                      <button
+                        mat-button
+                        *ngIf="value"
+                        matSuffix
+                        mat-icon-button
+                        aria-label="Password"
+                        (click)="value = ''"
+                        [(ngModel)]="editItem.password"
+                      >
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                    <mat-form-field class="example-form-field">
+                      <mat-label>{{ item.address }}</mat-label>
+                      <input matInput type="text" />
+                      <button
+                        mat-button
+                        *ngIf="value"
+                        matSuffix
+                        mat-icon-button
+                        aria-label="Address"
+                        (click)="value = ''"
+                        [(ngModel)]="editItem.address"
+                      >
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                    <mat-form-field class="example-form-field">
+                      <mat-label>{{ item.address2 }}</mat-label>
+                      <input matInput type="text" />
+                      <button
+                        mat-button
+                        *ngIf="value"
+                        matSuffix
+                        mat-icon-button
+                        aria-label="Address2"
+                        [(ngModel)]="editItem.address2"
+                        (click)="value = ''"
+                      >
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                    <mat-form-field class="example-form-field">
+                      <mat-label>{{ item.postalCode }}</mat-label>
+                      <input matInput type="text" />
+                      <button
+                        mat-button
+                        *ngIf="value"
+                        matSuffix
+                        mat-icon-button
+                        aria-label="Postal Code"
+                        (click)="value = ''"
+                        [(ngModel)]="editItem.postalCode"
+                      >
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-dismiss="modal"
+                    >
+                      Close
+                    </button>
+                    <button
+                      mat-raised-button
+                      color="primary"
+                      type="submit"
+                      class="btn btn-primary"
+                    >
+                      Save changes
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
         </td>
       </ng-container>
       <ng-container matColumnDef="opciones2">
@@ -79,46 +234,3 @@
     >
   </div></mat-card
 >
-
-<!-- Modal -->
-<div
-  class="modal fade"
-  id="dialogModal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="DialogUpdate"
-  aria-hidden="true"
->
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="DialogUpdate">Information</h2>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- input and changes for th user -->
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          Close
-        </button>
-        <button
-          mat-raised-button
-          color="primary"
-          type="button"
-          class="btn btn-primary"
-        >
-          Save changes
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
