@@ -50,7 +50,7 @@
             Update
           </button>
           <!-- Modal -->
-          <form action="" (ngSubmit)="addItemUpdated()">
+          <form (ngSubmit)="addItemUpdated()">
             <div
               class="modal fade"
               id="dialogModal"
@@ -63,7 +63,7 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <h2 class="modal-title" id="DialogUpdate">
-                      Information of {{ item.first_name }}
+                      Information of {{ editItem.first_name }}
                     </h2>
                     <button
                       type="button"
@@ -77,109 +77,8 @@
                   <div class="modal-body">
                     <!-- input and changes for th user -->
                     <mat-form-field class="example-form-field">
-                      <mat-label>{{ item.first_name }}</mat-label>
-                      <input matInput type="text" />
-                      <button
-                        mat-button
-                        *ngIf="value"
-                        matSuffix
-                        [(ngModel)]="editItem.first_name"
-                        mat-icon-button
-                        aria-label=""
-                        (click)="value = ''"
-                      >
-                        <mat-icon>close</mat-icon>
-                      </button>
-                    </mat-form-field>
-                    <mat-form-field class="example-form-field">
-                      <mat-label>{{ item.last_name }}</mat-label>
-                      <input matInput type="text" />
-                      <button
-                        mat-button
-                        *ngIf="value"
-                        matSuffix
-                        mat-icon-button
-                        aria-label="Last_Name"
-                        [(ngModel)]="editItem.last_name"
-                        (click)="value = ''"
-                      >
-                        <mat-icon>close</mat-icon>
-                      </button>
-                    </mat-form-field>
-                    <mat-form-field class="example-form-field">
-                      <mat-label>{{ item.email }}</mat-label>
-                      <input matInput type="text" />
-                      <button
-                        mat-button
-                        *ngIf="value"
-                        matSuffix
-                        mat-icon-button
-                        aria-label="Email"
-                        [(ngModel)]="editItem.email"
-                        (click)="value = ''"
-                      >
-                        <mat-icon>close</mat-icon>
-                      </button>
-                    </mat-form-field>
-                    <mat-form-field class="example-form-field">
-                      <mat-label>{{ item.password }}</mat-label>
-                      <input matInput type="text" />
-                      <button
-                        mat-button
-                        *ngIf="value"
-                        matSuffix
-                        mat-icon-button
-                        aria-label="Password"
-                        (click)="value = ''"
-                        [(ngModel)]="editItem.password"
-                      >
-                        <mat-icon>close</mat-icon>
-                      </button>
-                    </mat-form-field>
-                    <mat-form-field class="example-form-field">
-                      <mat-label>{{ item.address }}</mat-label>
-                      <input matInput type="text" />
-                      <button
-                        mat-button
-                        *ngIf="value"
-                        matSuffix
-                        mat-icon-button
-                        aria-label="Address"
-                        (click)="value = ''"
-                        [(ngModel)]="editItem.address"
-                      >
-                        <mat-icon>close</mat-icon>
-                      </button>
-                    </mat-form-field>
-                    <mat-form-field class="example-form-field">
-                      <mat-label>{{ item.address2 }}</mat-label>
-                      <input matInput type="text" />
-                      <button
-                        mat-button
-                        *ngIf="value"
-                        matSuffix
-                        mat-icon-button
-                        aria-label="Address2"
-                        [(ngModel)]="editItem.address2"
-                        (click)="value = ''"
-                      >
-                        <mat-icon>close</mat-icon>
-                      </button>
-                    </mat-form-field>
-                    <mat-form-field class="example-form-field">
-                      <mat-label>{{ item.postalCode }}</mat-label>
-                      <input matInput type="text" />
-                      <button
-                        mat-button
-                        *ngIf="value"
-                        matSuffix
-                        mat-icon-button
-                        aria-label="Postal Code"
-                        (click)="value = ''"
-                        [(ngModel)]="editItem.postalCode"
-                      >
-                        <mat-icon>close</mat-icon>
-                      </button>
+                      <mat-label>{{ editItem.first_name }}</mat-label>
+                      <input matInput [(ngModel)]="editItem.first_name" />
                     </mat-form-field>
                   </div>
                   <div class="modal-footer">

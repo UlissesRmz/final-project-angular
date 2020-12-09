@@ -9,13 +9,15 @@ a {
 }
 
 ul {
-  background: rgb(88, 88, 88);
-  background: radial-gradient(
-    circle,
-    rgba(88, 88, 88, 0.3) 0%,
-    rgba(176, 176, 176, 0.3029586834733894) 50%,
-    rgba(88, 88, 88, 0.3) 100%
+  background: rgb(233, 233, 233);
+  background: linear-gradient(
+    90deg,
+    rgba(233, 233, 233, 0.896796218487395) 0%,
+    rgba(233, 233, 233, 0.8995973389355743) 100%
   );
+  -webkit-box-shadow: 4px 3px 18px 0px rgba(125, 125, 125, 0.48);
+  -moz-box-shadow: 4px 3px 18px 0px rgba(125, 125, 125, 0.48);
+  box-shadow: 4px 3px 18px 0px rgba(125, 125, 125, 0.48);
 }
 li.toolbar {
   padding-left: 100px;
@@ -27,4 +29,7 @@ li.user {
 }
 li.loginIcon {
   padding-top: 18px;
+}
+span {
+  color: rgba(29, 27, 27, 0.623);
 }

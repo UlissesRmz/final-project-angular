@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 
+import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductsService } from '../products.service';
 import { MustMatch } from './../must-match';
@@ -30,12 +31,16 @@ export class SigninComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private _service: ProductsService,
-    private _notify: MatSnackBar
+    private _notify: MatSnackBar,
+    private router: Router
   ) {}
   openSnackBar(message: string, action: string) {
     this._notify.open(message, action, {
       duration: 2000,
     });
+  }
+  redirect() {
+    this.router.navigate(['/inventory']);
   }
   ngOnInit() {
     this.firstFormGroup = this.formBuilder.group(
@@ -88,6 +93,7 @@ export class SigninComponent implements OnInit {
     this.item.postalCode = '';
     this.item.password = '';
 
+    this.redirect();
     // alert(
     //   'SUCCESS!! :-)\n\n' + JSON.stringify(this.firstFormGroup.value, null, 4)
     // );

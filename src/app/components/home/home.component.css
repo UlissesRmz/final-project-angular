@@ -16,9 +16,17 @@ table {
   margin-bottom: 20px;
   margin-top: 20px;
 }
-
+.mat-tab-group {
+  margin-bottom: 48px;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.8491771708683473) 0%,
+    rgba(255, 255, 255, 0.85) 100%
+  );
+}
 img.profile {
-  width: 50%;
+  width: 20%;
   align-items: center;
 }
 

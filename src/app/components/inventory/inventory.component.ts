@@ -22,7 +22,7 @@ export class InventoryComponent implements AfterViewInit {
     'opciones2',
   ];
 
-  editItem: Forms_Regs;
+  editItem: any;
   dataSource: MatTableDataSource<Forms_Regs>;
   dataInfor: Forms_Regs[] = [];
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -30,7 +30,6 @@ export class InventoryComponent implements AfterViewInit {
 
   //firebase
   items: any;
-  value = '';
   durationInSeconds = 5;
 
   constructor(private _service: ProductsService, private _notify: MatSnackBar) {

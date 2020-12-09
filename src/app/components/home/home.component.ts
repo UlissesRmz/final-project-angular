@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
       .subscribe((data: any) => {
         //Obtiene los datos en la posicion 2
         this.dataInter = data.data;
+        console.log(this.dataInter[2].first_name);
       });
   }
 
@@ -34,17 +35,11 @@ export class HomeComponent implements OnInit {
   //Informacion que se mostrara
   displayedColumns: string[] = [
     'id',
+    'avatar',
     'email',
     'first_name',
     'last_name',
-    'avatar',
   ];
 
-  // columnas = [
-  //   { titulo: 'Id', name: 'id' },
-  //   { titulo: 'Email', name: 'email' },
-  //   { titulo: 'First Name', name: 'first_name' },
-  //   { titulo: 'Last Name', name: 'last_name' },
-  //   { titulo: 'Avatar', name: 'avatar' },
-  // ];
+  
 }
