@@ -40,6 +40,4 @@ export class HomeComponent implements OnInit {
     'first_name',
     'last_name',
   ];
-
-  
 }

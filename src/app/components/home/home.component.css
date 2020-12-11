@@ -10,6 +10,9 @@ div.design-carousel {
 mat-card {
   margin: 20px;
 }
+img.img-table {
+  max-width: 30%;
+}
 
 table {
   width: 100%;
