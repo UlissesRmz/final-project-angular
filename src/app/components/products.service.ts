@@ -33,7 +33,7 @@ export class ProductsService {
   listItem() {
     return this.items;
   }
-  addItem(item: Forms_Regs) {
+  addItem(item: any) {
     this.itemsCollection.add(item);
   }
   deleteItem(item: any) {

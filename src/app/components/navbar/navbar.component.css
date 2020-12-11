@@ -5,7 +5,7 @@ a {
   color: black;
   display: inline-flex;
   font-size: 20px;
-  margin: 10px 5px 10px 25px;
+  margin: 10px 5px 8px 25px;
 }
 
 ul {
@@ -21,14 +21,8 @@ ul {
 }
 li.toolbar {
   padding-left: 100px;
-  padding-top: 10px;
+  padding-top: 11px;
   padding-right: 50px;
-}
-li.user {
-  padding-left: 43%;
-}
-li.loginIcon {
-  padding-top: 18px;
 }
 span {
   color: rgba(29, 27, 27, 0.623);

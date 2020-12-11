@@ -3,58 +3,35 @@
 </style>
 <div class="navigation sticky-top">
   <ul class="nav">
-    <li class="toolbar">
-      <button
-        mat-icon-button
-        [matMenuTriggerFor]="menu"
-        aria-label="Example icon-button with a menu"
-      >
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-          <mat-icon>notifications</mat-icon>
-          <span>Notifications</span>
-        </button>
-        <button mat-menu-item disabled>
-          <mat-icon>voicemail</mat-icon>
-          <span>Check voice mail</span>
-        </button>
-        <button mat-menu-item>
-          <mat-icon>insert_comment</mat-icon>
-          <span>Messages</span>
-        </button>
-      </mat-menu>
-    </li>
     <li class="nav-item">
       <a
         class="nav-link"
         [routerLink]="['/home']"
         routerLinkActive="router-link-active"
-        >Home <span class="material-icons"> home </span></a
-      >
+        ><span class="material-icons"> home </span>Home
+      </a>
     </li>
     <li class="nav-item">
       <a
         class="nav-link"
         [routerLink]="['/sign-in']"
         routerLinkActive="router-link-active"
-        >Register <span class="material-icons"> supervisor_account </span></a
-      >
+        ><span class="material-icons"> supervisor_account </span>Register
+      </a>
     </li>
     <li class="nav-item">
       <a
         class="nav-link"
         [routerLink]="['/inventory']"
         routerLinkActive="router-link-active"
-        >Account List <span class="material-icons icon"> list </span></a
-      >
+        ><span class="material-icons"> article </span>Account List
+      </a>
     </li>
-    <li class="user">
-      <a class="nav-link"><i>UlisesRmz</i> </a>
+    <li class="nav-item">
+      <a class="nav-link"><mat-icon matBadge="2">notifications</mat-icon> </a>
     </li>
-    <li class="loginIcon">
-      <span class="material-icons"> login </span>
+    <li class="nav-item">
+      <a class="nav-link"><mat-icon matBadge="2">insert_comment</mat-icon> </a>
     </li>
   </ul>
 </div>

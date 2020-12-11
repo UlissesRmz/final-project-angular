@@ -24,6 +24,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -62,6 +63,7 @@ const routes: Routes = [
     MatTabsModule,
     MatMenuModule,
     FormsModule,
+    MatBadgeModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatIconModule,

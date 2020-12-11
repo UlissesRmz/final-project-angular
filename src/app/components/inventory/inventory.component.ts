@@ -1,11 +1,11 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ProductsService } from '../products.service';
 import { Forms_Regs } from '../forms_reg';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-inventory',
@@ -22,7 +22,6 @@ export class InventoryComponent implements AfterViewInit {
     'opciones2',
   ];
 
-  editItem: any;
   dataSource: MatTableDataSource<Forms_Regs>;
   dataInfor: Forms_Regs[] = [];
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -30,9 +29,14 @@ export class InventoryComponent implements AfterViewInit {
 
   //firebase
   items: any;
+  editItem: any;
   durationInSeconds = 5;
 
-  constructor(private _service: ProductsService, private _notify: MatSnackBar) {
+  constructor(
+    private _service: ProductsService,
+    private _notify: MatSnackBar,
+    public dialog: MatDialog
+  ) {
     this._service.listItem().subscribe((item) => {
       this.items = item;
       this.dataInfor = item;
@@ -52,10 +56,13 @@ export class InventoryComponent implements AfterViewInit {
   addItemUpdated() {
     this._service.updateItem(this.editItem);
   }
+  // openDialog() {
+  //   this.dialog.open(UpdateItem);
+  // }
 
   openSnackBar(message: string, action: string) {
     this._notify.open(message, action, {
-      duration: 2000,
+      duration: 1000,
     });
   }
   ngAfterViewInit() {
