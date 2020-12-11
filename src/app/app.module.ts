@@ -43,7 +43,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FooterExComponent } from './components/footer-ex/footer-ex.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'sign-in', component: SigninComponent },
   { path: 'log-in', component: LogInComponent },

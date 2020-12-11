@@ -36,12 +36,11 @@ img.profile {
 ng-container.tabledata {
   margin-bottom: 25px;
 }
-td.imagen {
-  margin-bottom: 20px;
-}
 
 .example-card {
-  max-width: 400px;
+  max-width: 350px;
+  height: 100%;
+  width: 100%;
 }
 
 .example-header-image {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from './../products.service';
 import { Info_Data } from './../info_data';
 import { MatTabsModule } from '@angular/material/tabs';
+import { typeWithParameters } from '@angular/compiler/src/render3/util';
 // import { Observable } from '@angular/cli';
 
 //Para le componenete
@@ -18,7 +19,11 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getData();
   }
+  num1 = numeroAleatorioDecimales(0, 6);
 
+  num3 = numeroAleatorioDecimales(0, 6);
+
+  num4 = numeroAleatorioDecimales(0, 6);
   //Get data API
   getData() {
     this._service
@@ -26,7 +31,6 @@ export class HomeComponent implements OnInit {
       .subscribe((data: any) => {
         //Obtiene los datos en la posicion 2
         this.dataInter = data.data;
-        console.log(this.dataInter[2].first_name);
       });
   }
 
@@ -40,4 +44,9 @@ export class HomeComponent implements OnInit {
     'first_name',
     'last_name',
   ];
+}
+
+function numeroAleatorioDecimales(min: number, max: number) {
+  var num = Math.floor(Math.random() * (max - min));
+  return num + min;
 }

@@ -9,6 +9,7 @@ a {
 }
 
 ul {
+  padding-right: 3%;
   background: rgb(233, 233, 233);
   background: linear-gradient(
     90deg,
@@ -18,11 +19,7 @@ ul {
   -webkit-box-shadow: 4px 3px 18px 0px rgba(125, 125, 125, 0.48);
   -moz-box-shadow: 4px 3px 18px 0px rgba(125, 125, 125, 0.48);
   box-shadow: 4px 3px 18px 0px rgba(125, 125, 125, 0.48);
-}
-li.toolbar {
-  padding-left: 100px;
-  padding-top: 11px;
-  padding-right: 50px;
+  max-width: 100%;
 }
 span {
   color: rgba(29, 27, 27, 0.623);
